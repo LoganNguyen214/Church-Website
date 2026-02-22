@@ -237,13 +237,11 @@ blockquote cite { font-size: .78rem; color: var(--gold); font-weight: 700; lette
 .events-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; flex-wrap: wrap; gap: 16px; }
 
 .events-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; margin-top: 36px; 
 }
 
 .event-card {
-  border: 1.5px solid var(--border); border-radius: 10px;
-  overflow: hidden; transition: box-shadow .2s, transform .2s;
+  background: var(--cream); border: 1.5px solid var(--border); border-radius: 10px; padding: 24px 22px; transition: box-shadow .2s, transform .2s; 
 }
 .event-card:hover { box-shadow: 0 6px 24px rgba(28,43,74,.1); transform: translateY(-2px); }
 
