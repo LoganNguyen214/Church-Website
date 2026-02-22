@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First Baptist Church Shannon – Welcome Home</title>
+<meta name="description" content="First Baptist Church Shannon – A warm, welcoming community of faith in Shannon, Mississippi. Join us for worship every Sunday.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   RESET & VARIABLES
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --navy:       #1c2b4a;
+  --navy-deep:  #111d35;
+  --gold:       #b8962e;
+  --gold-light: #d4b45a;
+  --gold-pale:  #f5ecd6;
+  --cream:      #faf8f3;
+  --white:      #ffffff;
+  --text:       #2c3e50;
+  --muted:      #6b7280;
+  --border:     #e5dfd4;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Lato', sans-serif;
+
+  --nav-h: 72px;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--cream);
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px;
+  background: rgba(28, 43, 74, 0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(184,150,46,.25);
+  transition: background .3s;
+}
+
+.nav-brand {
+  display: flex; align-items: center; gap: 14px; text-decoration: none;
+}
+
+.nav-cross {
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; color: var(--gold-light);
+}
+
+.nav-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem; font-weight: 600;
+  color: var(--white); line-height: 1.2;
+  letter-spacing: .01em;
+}
+.nav-name span { display: block; font-size: .72rem; font-weight: 300; color: var(--gold-light); letter-spacing: .08em; text-transform: uppercase; font-family: var(--font-body); }
+
+.nav-links {
+  display: flex; align-items: center; gap: 32px; list-style: none;
+}
+.nav-links a {
+  font-size: .85rem; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: rgba(255,255,255,.8);
+  text-decoration: none; transition: color .2s;
+}
+.nav-links a:hover { color: var(--gold-light); }
+
+.nav-give {
+  background: var(--gold); color: var(--navy-deep) !important;
+  padding: 8px 20px; border-radius: 4px;
+  font-weight: 700 !important; transition: background .2s !important;
+}
+.nav-give:hover { background: var(--gold-light) !important; color: var(--navy-deep) !important; }
+
+.nav-toggle {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.nav-toggle span {
+  display: block; width: 24px; height: 2px;
+  background: var(--white); border-radius: 2px;
+  transition: all .3s;
+}
+
+/* Mobile nav */
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links {
+    display: none; position: fixed;
+    top: var(--nav-h); left: 0; right: 0;
+    background: var(--navy-deep);
+    flex-direction: column; gap: 0;
+    border-top: 1px solid rgba(184,150,46,.2);
+    padding: 16px 0 24px;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { width: 100%; }
+  .nav-links a { display: block; padding: 12px 28px; font-size: .9rem; }
+  .nav-give { margin: 8px 28px 0; padding: 10px 20px; text-align: center; border-radius: 4px; }
+  .nav-toggle { display: flex; }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  padding: calc(var(--nav-h) + 40px) 24px 80px;
+  text-align: center;
+}
+
+/* Deep navy gradient background with subtle texture */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 30%, #243559 0%, var(--navy-deep) 70%);
+  z-index: 0;
+}
+
+/* Decorative rays */
+.hero-rays {
+  position: absolute; inset: 0; z-index: 0; overflow: hidden;
+}
+.hero-rays::before {
+  content: '';
+  position: absolute;
+  top: -20%; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: conic-gradient(from 270deg at 50% 0%,
+    transparent 0deg,
+    rgba(184,150,46,.04) 10deg,
+    transparent 20deg,
+    rgba(184,150,46,.04) 30deg,
+    transparent 40deg,
+    rgba(184,150,46,.04) 50deg,
+    transparent 60deg
+  );
+}
+
+.hero-content {
+  position: relative; z-index: 1;
+  max-width: 760px;
+  animation: heroFadeIn .9s ease both;
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.hero-eyebrow {
+  font-family: var(--font-body);
+  font-size: .75rem; font-weight: 700; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--gold-light);
+  margin-bottom: 20px;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: ''; display: block;
+  width: 40px; height: 1px; background: var(--gold-light); opacity: .5;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700; line-height: 1.05;
+  color: var(--white);
+  margin-bottom: 12px;
+  letter-spacing: -.01em;
+}
+
+.hero h1 em {
+  font-style: italic; color: var(--gold-light);
+}
+
+.hero-location {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: rgba(255,255,255,.55);
+  font-style: italic;
+  margin-bottom: 32px;
+  letter-spacing: .02em;
+}
+
+.hero-service {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(184,150,46,.12);
+  border: 1px solid rgba(184,150,46,.35);
+  border-radius: 40px; padding: 10px 24px;
+  color: var(--gold-light);
+  font-size: .88rem; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; margin-bottom: 44px;
+}
+
+.hero-service::before { content: '✝'; font-size: 1rem; }
+
+.hero-buttons {
+  display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;
+}
+
+.btn {
+  display: inline-block; text-decoration: none;
+  font-family: var(--font-body); font-weight: 700;
+  font-size: .88rem; letter-spacing: .07em; text-transform: uppercase;
+  padding: 15px 36px; border-radius: 4px;
+  transition: all .2s; cursor: pointer; border: none;
+}
+
+.btn-primary {
+  background: var(--gold); color: var(--navy-deep);
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 6px 24px rgba(184,150,46,.35); }
+
+.btn-outline {
+  background: transparent; color: var(--white);
+  border: 1.5px solid rgba(255,255,255,.4);
+}
+.btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,.08); transform: translateY(-1px); }
+
+.hero-scroll {
+  position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: rgba(255,255,255,.35); font-size: .72rem; letter-spacing: .12em;
+  text-transform: uppercase; animation: bounce 2s infinite;
+}
+.hero-scroll::after { content: '↓'; font-size: 1.1rem; }
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ============================================================
+   SECTION SHARED
+   ============================================================ */
+section { padding: 90px 24px; }
+
+.section-inner { max-width: 1080px; margin: 0 auto; }
+
+.section-label {
+  font-size: .72rem; font-weight: 700; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-label::before {
+  content: ''; display: block;
+  width: 24px; height: 1.5px; background: var(--gold);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700; line-height: 1.15;
+  color: var(--navy); margin-bottom: 16px;
+}
+
+.section-lead {
+  font-size: 1.05rem; line-height: 1.75; color: var(--muted);
+  max-width: 600px;
+}
+
+/* ============================================================
+   WELCOME STRIP
+   ============================================================ */
+.welcome-strip {
+  background: var(--navy);
+  padding: 48px 24px;
+}
+
+.welcome-strip .section-inner {
+  display: flex; align-items: center; gap: 60px;
+  flex-wrap: wrap;
+}
+
+.ws-text { flex: 1; min-width: 260px; }
+
+.ws-text h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--white); font-weight: 600;
+  line-height: 1.3; margin-bottom: 14px;
+}
+.ws-text h2 em { color: var(--gold-light); font-style: italic; }
+
+.ws-text p {
+  color: rgba(255,255,255,.65); font-size: .95rem; line-height: 1.75;
+}
+
+.ws-cards {
+  display: flex; gap: 16px; flex-wrap: wrap;
+}
+
+.ws-card {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(184,150,46,.25);
+  border-radius: 8px; padding: 20px 22px;
+  min-width: 140px; text-align: center;
+}
+.ws-card .wsc-icon { font-size: 1.6rem; margin-bottom: 8px; display: block; }
+.ws-card .wsc-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--gold-light); margin-bottom: 4px; }
+.ws-card .wsc-value { font-family: var(--font-display); font-size: 1.1rem; color: var(--white); font-weight: 600; }
+
+/* ============================================================
+   SERVICE TIMES
+   ============================================================ */
+.services { background: var(--cream); }
+
+.services .section-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: start;
+}
+
+@media (max-width: 700px) {
+  .services .section-inner { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.service-cards { display: flex; flex-direction: column; gap: 16px; }
+
+.service-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: 8px; padding: 22px 24px;
+  display: flex; align-items: center; gap: 20px;
+  transition: box-shadow .2s;
+}
+.service-card:hover { box-shadow: 0 4px 20px rgba(28,43,74,.08); }
+
+.sc-icon { font-size: 1.8rem; flex-shrink: 0; }
+.sc-body {}
+.sc-name { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+.sc-time { font-size: .9rem; color: var(--gold); font-weight: 700; margin-bottom: 2px; }
+.sc-note { font-size: .82rem; color: var(--muted); }
+
+.services-aside p {
+  font-size: .95rem; line-height: 1.8; color: var(--muted); margin-bottom: 24px;
+}
+
+.address-block {
+  background: var(--gold-pale);
+  border: 1.5px solid var(--border);
+  border-radius: 8px; padding: 20px 22px;
+}
+.address-block strong { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.address-block p { font-size: .92rem; color: var(--navy); line-height: 1.6; }
+.address-block a { color: var(--gold); font-weight: 700; font-size: .85rem; text-decoration: none; margin-top: 10px; display: inline-block; }
+.address-block a:hover { text-decoration: underline; }
+
+/* ============================================================
+   WATCH LIVE
+   ============================================================ */
+.watch { background: var(--navy-deep); }
+
+.watch .section-label { color: var(--gold-light); }
+.watch .section-label::before { background: var(--gold-light); }
+.watch .section-title { color: var(--white); }
+.watch .section-lead { color: rgba(255,255,255,.55); }
+
+.watch-layout {
+  display: grid; grid-template-columns: 1fr 340px;
+  gap: 40px; align-items: start; margin-top: 40px;
+}
+
+@media (max-width: 800px) {
+  .watch-layout { grid-template-columns: 1fr; }
+}
+
+.fb-embed-wrapper {
+  position: relative; width: 100%;
+  padding-bottom: 56.25%; /* 16:9 */
+  background: #0f1824;
+  border-radius: 10px; overflow: hidden;
+  border: 1px solid rgba(184,150,46,.2);
+}
+
+.fb-embed-wrapper iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+
+/* Placeholder shown when no live stream */
+.fb-placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 16px; color: rgba(255,255,255,.4);
+  font-size: .9rem; text-align: center; padding: 24px;
+}
+.fb-placeholder .ph-icon { font-size: 3rem; opacity: .4; }
+.fb-placeholder strong { color: rgba(255,255,255,.7); font-family: var(--font-display); font-size: 1.3rem; }
+
+.watch-info { color: rgba(255,255,255,.75); }
+
+.watch-info h3 {
+  font-family: var(--font-display); font-size: 1.4rem;
+  color: var(--white); margin-bottom: 12px;
+}
+.watch-info p { font-size: .9rem; line-height: 1.75; margin-bottom: 20px; }
+
+.watch-live-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(220,38,38,.15); border: 1px solid rgba(220,38,38,.4);
+  color: #fca5a5; border-radius: 20px; padding: 6px 14px;
+  font-size: .78rem; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; margin-bottom: 20px;
+}
+.live-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #ef4444;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: .3; }
+}
+
+.watch-links { display: flex; flex-direction: column; gap: 10px; }
+.watch-link {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+  border-radius: 6px; padding: 12px 16px;
+  color: var(--white); text-decoration: none; font-size: .88rem; font-weight: 600;
+  transition: background .2s;
+}
+.watch-link:hover { background: rgba(255,255,255,.1); }
+.watch-link .wl-icon { font-size: 1.2rem; }
+
+/* ============================================================
+   GIVE
+   ============================================================ */
+.give { background: var(--gold-pale); }
+
+.give .section-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center;
+}
+
+@media (max-width: 700px) {
+  .give .section-inner { grid-template-columns: 1fr; gap: 36px; }
+}
+
+.give-text .section-lead { max-width: 100%; }
+
+.give-text blockquote {
+  border-left: 3px solid var(--gold);
+  padding: 12px 20px;
+  margin: 28px 0;
+  background: rgba(184,150,46,.08);
+  border-radius: 0 6px 6px 0;
+}
+.give-text blockquote p {
+  font-family: var(--font-display); font-size: 1.1rem;
+  font-style: italic; color: var(--navy); line-height: 1.6;
+}
+.give-text blockquote cite { font-size: .8rem; color: var(--gold); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-top: 6px; display: block; }
+
+.give-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px; padding: 40px 36px;
+  text-align: center;
+  box-shadow: 0 8px 40px rgba(28,43,74,.08);
+}
+.give-card .gc-icon { font-size: 2.5rem; margin-bottom: 16px; display: block; }
+.give-card h3 { font-family: var(--font-display); font-size: 1.7rem; color: var(--navy); margin-bottom: 10px; }
+.give-card p { font-size: .9rem; color: var(--muted); line-height: 1.65; margin-bottom: 28px; }
+
+.give-card .btn-give {
+  display: block; width: 100%;
+  background: var(--navy); color: var(--white);
+  font-family: var(--font-body); font-weight: 700;
+  font-size: .9rem; letter-spacing: .08em; text-transform: uppercase;
+  padding: 16px; border-radius: 6px; text-decoration: none;
+  transition: background .2s, transform .2s;
+}
+.give-card .btn-give:hover { background: var(--navy-deep); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(28,43,74,.2); }
+
+.give-card .gc-note { font-size: .78rem; color: var(--muted); margin-top: 12px; }
+
+/* ============================================================
+   EVENTS PREVIEW
+   ============================================================ */
+.events { background: var(--white); }
+
+.events-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; flex-wrap: wrap; gap: 16px; }
+
+.events-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.event-card {
+  border: 1.5px solid var(--border); border-radius: 10px;
+  overflow: hidden; transition: box-shadow .2s, transform .2s;
+}
+.event-card:hover { box-shadow: 0 6px 24px rgba(28,43,74,.1); transform: translateY(-2px); }
+
+.event-date-bar {
+  background: var(--navy); padding: 14px 20px;
+  display: flex; align-items: center; gap: 14px;
+}
+.edb-month { font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-light); }
+.edb-day { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--white); line-height: 1; margin-top: 2px; }
+.edb-line { width: 1px; height: 36px; background: rgba(184,150,46,.3); }
+.edb-time { font-size: .82rem; color: rgba(255,255,255,.7); line-height: 1.4; }
+
+.event-body { padding: 18px 20px; }
+.event-body h4 { font-family: var(--font-display); font-size: 1.15rem; color: var(--navy); margin-bottom: 6px; font-weight: 700; }
+.event-body p { font-size: .84rem; color: var(--muted); line-height: 1.6; }
+
+/* ============================================================
+   CONTACT / FOOTER
+   ============================================================ */
+.contact { background: var(--navy-deep); padding: 80px 24px 0; }
+
+.contact .section-label { color: var(--gold-light); }
+.contact .section-label::before { background: var(--gold-light); }
+.contact .section-title { color: var(--white); }
+
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px; margin-top: 48px;
+}
+
+@media (max-width: 700px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+
+.contact-col h4 {
+  font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--gold-light);
+  margin-bottom: 14px; padding-bottom: 10px;
+  border-bottom: 1px solid rgba(184,150,46,.25);
+}
+
+.contact-col p, .contact-col address {
+  font-size: .9rem; color: rgba(255,255,255,.6);
+  line-height: 1.75; font-style: normal;
+}
+
+.contact-col a { color: var(--gold-light); text-decoration: none; }
+.contact-col a:hover { text-decoration: underline; }
+
+.contact-map {
+  margin-top: 48px; border-radius: 10px 10px 0 0;
+  overflow: hidden; height: 200px; background: #1a2744;
+  border: 1px solid rgba(184,150,46,.2); border-bottom: none;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,.3); font-size: .85rem; gap: 8px;
+}
+
+.footer-bar {
+  background: var(--navy-deep); border-top: 1px solid rgba(255,255,255,.06);
+  padding: 20px 24px; text-align: center;
+  font-size: .78rem; color: rgba(255,255,255,.3);
+}
+.footer-bar a { color: rgba(255,255,255,.4); text-decoration: none; }
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+.text-link {
+  color: var(--gold); font-weight: 700; text-decoration: none;
+  font-size: .88rem; letter-spacing: .04em;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.text-link:hover { text-decoration: underline; }
+.text-link::after { content: '→'; }
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-cross">✝</div>
+    <div class="nav-name">
+      First Baptist Church
+      <span>Shannon, Mississippi</span>
+    </div>
+  </a>
+
+  <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services">Service Times</a></li>
+    <li><a href="#watch">Watch Live</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="YOUR_ONREALM_LINK_HERE" target="_blank" class="nav-give">Give</a></li>
+  </ul>
+</nav>
+
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="home">
+  <div class="hero-rays"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Shannon, Mississippi</div>
+    <h1>First <em>Baptist</em><br>Church Shannon</h1>
+    <p class="hero-location">A place to belong. A family of faith.</p>
+    <div class="hero-service">Sunday Worship — 11:00 AM</div>
+    <div class="hero-buttons">
+      <a href="#services" class="btn btn-primary">Plan Your Visit</a>
+      <a href="#watch" class="btn btn-outline">Watch Live</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+
+<!-- ============================================================
+     WELCOME STRIP
+     ============================================================ -->
+<div class="welcome-strip">
+  <div class="section-inner">
+    <div class="ws-text">
+      <h2>You are <em>welcome</em> here.</h2>
+      <p>Whether you're a lifelong member or visiting for the first time, First Baptist Church Shannon is a place of grace, community, and genuine faith. Come as you are — we're glad you're here.</p>
+    </div>
+    <div class="ws-cards">
+      <div class="ws-card">
+        <span class="wsc-icon">🙏</span>
+        <div class="wsc-label">Worship</div>
+        <div class="wsc-value">Sunday, 11 AM</div>
+      </div>
+      <div class="ws-card">
+        <span class="wsc-icon">📖</span>
+        <div class="wsc-label">Bible Study</div>
+        <div class="wsc-value">UPDATE ME</div>
+      </div>
+      <div class="ws-card">
+        <span class="wsc-icon">👨‍👩‍👧</span>
+        <div class="wsc-label">Community</div>
+        <div class="wsc-value">All are welcome</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     SERVICE TIMES
+     ============================================================ -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div>
+      <div class="section-label">When We Gather</div>
+      <h2 class="section-title">Service Times</h2>
+      <div class="service-cards">
+
+        <div class="service-card">
+          <div class="sc-icon">☀️</div>
+          <div class="sc-body">
+            <div class="sc-name">Sunday Morning Worship</div>
+            <div class="sc-time">11:00 AM – 12:00 PM</div>
+            <div class="sc-note">Main sanctuary · All ages welcome</div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="sc-icon">📖</div>
+          <div class="sc-body">
+            <div class="sc-name">Sunday School / Bible Study</div>
+            <div class="sc-time">UPDATE ME</div>
+            <div class="sc-note">Classes for all ages</div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="sc-icon">🌙</div>
+          <div class="sc-body">
+            <div class="sc-name">Midweek Service</div>
+            <div class="sc-time">UPDATE ME</div>
+            <div class="sc-note">Prayer &amp; fellowship</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="services-aside">
+      <div class="section-label">Find Us</div>
+      <h2 class="section-title">We'd Love to<br>See You Sunday</h2>
+      <p>No matter where you are in your faith journey, there's a place for you at First Baptist Shannon. Our doors are always open.</p>
+      <div class="address-block">
+        <strong>📍 Our Location</strong>
+        <p>
+          UPDATE: Street Address<br>
+          Shannon, Mississippi<br>
+          <br>
+          📞 UPDATE: (662) 555-0000<br>
+          ✉️ UPDATE: info@fbcshannon.org
+        </p>
+        <a href="https://maps.google.com" target="_blank">Get Directions →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     WATCH LIVE
+     ============================================================ -->
+<section class="watch" id="watch">
+  <div class="section-inner">
+    <div class="section-label">Worship From Anywhere</div>
+    <h2 class="section-title">Watch Live</h2>
+    <p class="section-lead">Join us online every Sunday morning. We stream live on Facebook — watch right here or on our Facebook page.</p>
+
+    <div class="watch-layout">
+
+      <!-- Facebook embed placeholder — replace with real embed code -->
+      <div class="fb-embed-wrapper">
+        <!-- 
+          REPLACE THIS with your Facebook Live embed.
+          Go to your Facebook Page → Live video → Share → Embed
+          Paste the <iframe> code here.
+          
+          Example:
+          <iframe src="https://www.facebook.com/plugins/video.php?href=YOUR_PAGE_URL&show_text=false"
+            width="560" height="315" scrolling="no" frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+          </iframe>
+        -->
+        <div class="fb-placeholder">
+          <div class="ph-icon">📺</div>
+          <strong>Live Stream</strong>
+          <p>Join us Sunday at 11:00 AM.<br>Stream appears here when we go live.</p>
+          <a href="YOUR_FACEBOOK_PAGE_URL" target="_blank" style="color:#b8962e;font-weight:700;font-size:.85rem;">Watch on Facebook →</a>
+        </div>
+      </div>
+
+      <div class="watch-info">
+        <div class="watch-live-badge">
+          <div class="live-dot"></div>
+          Live Every Sunday
+        </div>
+        <h3>Worship With Us Online</h3>
+        <p>Can't make it in person? We go live every Sunday at 11:00 AM so you can worship from wherever you are. Invite a friend to watch along.</p>
+        <p>After the service, the recording stays available on our Facebook page so you can rewatch anytime.</p>
+
+        <div class="watch-links">
+          <a href="YOUR_FACEBOOK_PAGE_URL" target="_blank" class="watch-link">
+            <span class="wl-icon">📘</span>
+            Follow us on Facebook
+          </a>
+          <a href="#contact" class="watch-link">
+            <span class="wl-icon">📍</span>
+            Visit Us in Person
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     GIVE
+     ============================================================ -->
+<section class="give" id="give">
+  <div class="section-inner">
+    <div class="give-text">
+      <div class="section-label">Generosity</div>
+      <h2 class="section-title">Give to<br>God's Work</h2>
+      <p class="section-lead">Your generosity supports our church, our community, and missions work here and around the world. Every gift makes a difference.</p>
+
+      <blockquote>
+        <p>"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."</p>
+        <cite>2 Corinthians 9:7</cite>
+      </blockquote>
+
+      <p class="section-lead" style="font-size:.9rem;">Giving is safe and secure through our online portal. You can give a one-time gift or set up recurring giving.</p>
+    </div>
+
+    <div class="give-card">
+      <span class="gc-icon">💛</span>
+      <h3>Online Giving</h3>
+      <p>Give securely online through our giving portal. One-time or recurring — every gift is appreciated.</p>
+      <a href="YOUR_ONREALM_LINK_HERE" target="_blank" class="btn-give">Give Now</a>
+      <p class="gc-note">Secure giving powered by OnRealm</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     EVENTS
+     ============================================================ -->
+<section class="events" id="events">
+  <div class="section-inner">
+    <div class="events-header">
+      <div>
+        <div class="section-label">What's Coming Up</div>
+        <h2 class="section-title">Events &amp; Announcements</h2>
+      </div>
+      <a href="#contact" class="text-link">Contact us for more info</a>
+    </div>
+
+    <div class="events-grid">
+
+      <!-- SAMPLE EVENT 1 — update with real events -->
+      <div class="event-card">
+        <div class="event-date-bar">
+          <div>
+            <div class="edb-month">Sunday</div>
+            <div class="edb-day">Every<br>Week</div>
+          </div>
+          <div class="edb-line"></div>
+          <div class="edb-time">11:00 AM<br>Main Sanctuary</div>
+        </div>
+        <div class="event-body">
+          <h4>Sunday Morning Worship</h4>
+          <p>Join us every Sunday for worship, the Word, and fellowship with your church family.</p>
+        </div>
+      </div>
+
+      <!-- SAMPLE EVENT 2 -->
+      <div class="event-card">
+        <div class="event-date-bar">
+          <div>
+            <div class="edb-month">UPDATE</div>
+            <div class="edb-day">00</div>
+          </div>
+          <div class="edb-line"></div>
+          <div class="edb-time">UPDATE TIME<br>UPDATE LOCATION</div>
+        </div>
+        <div class="event-body">
+          <h4>Update This Event</h4>
+          <p>Add your upcoming event details here — VBS, revival, church picnic, etc.</p>
+        </div>
+      </div>
+
+      <!-- SAMPLE EVENT 3 -->
+      <div class="event-card">
+        <div class="event-date-bar">
+          <div>
+            <div class="edb-month">UPDATE</div>
+            <div class="edb-day">00</div>
+          </div>
+          <div class="edb-line"></div>
+          <div class="edb-time">UPDATE TIME<br>UPDATE LOCATION</div>
+        </div>
+        <div class="event-body">
+          <h4>Update This Event</h4>
+          <p>Add your upcoming event details here.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title" style="color:var(--white);">We'd Love to<br>Hear From You</h2>
+
+    <div class="contact-grid">
+      <div class="contact-col">
+        <h4>Visit Us</h4>
+        <address>
+          UPDATE: Street Address<br>
+          Shannon, Mississippi<br>
+          <br>
+          <a href="https://maps.google.com" target="_blank">Get Directions →</a>
+        </address>
+      </div>
+      <div class="contact-col">
+        <h4>Service Times</h4>
+        <p>
+          Sunday Worship: 11:00 AM<br>
+          Sunday School: UPDATE ME<br>
+          Midweek: UPDATE ME<br>
+        </p>
+      </div>
+      <div class="contact-col">
+        <h4>Connect</h4>
+        <p>
+          📞 <a href="tel:+16625550000">UPDATE: (662) 555-0000</a><br>
+          ✉️ <a href="mailto:info@fbcshannon.org">UPDATE: info@fbcshannon.org</a><br>
+          <br>
+          <a href="YOUR_FACEBOOK_PAGE_URL" target="_blank">📘 Facebook Page →</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Map placeholder — replace iframe src with real Google Maps embed -->
+    <div class="contact-map">
+      📍 Replace this with a Google Maps embed for Shannon, MS
+    </div>
+  </div>
+</section>
+
+<div class="footer-bar">
+  <p>© <span id="yr"></span> First Baptist Church Shannon · Shannon, Mississippi · Built with love for our community</p>
+</div>
+
+
+<script>
+// Year
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Mobile nav toggle
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+// Close mobile nav on link click
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+// Smooth scroll offset for fixed nav
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>

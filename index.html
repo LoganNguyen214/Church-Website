@@ -228,6 +228,37 @@ blockquote cite { font-size: .78rem; color: var(--gold); font-weight: 700; lette
 /* FOOTER */
 .footer { background: var(--navy-deep); border-top: 1px solid rgba(255,255,255,.06); padding: 20px 24px; text-align: center; font-size: .76rem; color: rgba(255,255,255,.28); }
 .footer a { color: rgba(255,255,255,.38); text-decoration: none; }
+
+/* ============================================================
+   EVENTS PREVIEW
+   ============================================================ */
+.events { background: var(--white); }
+
+.events-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; flex-wrap: wrap; gap: 16px; }
+
+.events-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.event-card {
+  border: 1.5px solid var(--border); border-radius: 10px;
+  overflow: hidden; transition: box-shadow .2s, transform .2s;
+}
+.event-card:hover { box-shadow: 0 6px 24px rgba(28,43,74,.1); transform: translateY(-2px); }
+
+.event-date-bar {
+  background: var(--navy); padding: 14px 20px;
+  display: flex; align-items: center; gap: 14px;
+}
+.edb-month { font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-light); }
+.edb-day { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--white); line-height: 1; margin-top: 2px; }
+.edb-line { width: 1px; height: 36px; background: rgba(184,150,46,.3); }
+.edb-time { font-size: .82rem; color: rgba(255,255,255,.7); line-height: 1.4; }
+
+.event-body { padding: 18px 20px; }
+.event-body h4 { font-family: var(--font-display); font-size: 1.15rem; color: var(--navy); margin-bottom: 6px; font-weight: 700; }
+.event-body p { font-size: .84rem; color: var(--muted); line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -245,6 +276,7 @@ blockquote cite { font-size: .78rem; color: var(--gold); font-weight: 700; lette
     <li><a href="#services">Service Times</a></li>
     <li><a href="#watch">Watch Live</a></li>
     <li><a href="#ministries">Ministries</a></li>
+    <li><a href="#events">Events</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="https://onrealm.org/FBCShannon/Give" target="_blank" class="nav-give">Give</a></li>
   </ul>
@@ -435,6 +467,73 @@ blockquote cite { font-size: .78rem; color: var(--gold); font-weight: 700; lette
         <div class="min-name">Tuesday Evening</div>
         <div class="min-desc">Brown bag lunch crew meets every Tuesday at 11:30 AM</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EVENTS
+     ============================================================ -->
+<section class="events" id="events">
+  <div class="section-inner">
+    <div class="events-header">
+      <div>
+        <div class="section-label">What's Coming Up</div>
+        <h2 class="section-title">Events &amp; Announcements</h2>
+      </div>
+      <a href="#contact" class="text-link">Contact us for more info</a>
+    </div>
+
+    <div class="events-grid">
+
+      <!-- SAMPLE EVENT 1 — update with real events -->
+      <div class="event-card">
+        <div class="event-date-bar">
+          <div>
+            <div class="edb-month">Sunday</div>
+            <div class="edb-day">Every<br>Week</div>
+          </div>
+          <div class="edb-line"></div>
+          <div class="edb-time">11:00 AM<br>Main Sanctuary</div>
+        </div>
+        <div class="event-body">
+          <h4>Sunday Morning Worship</h4>
+          <p>Join us every Sunday for worship, the Word, and fellowship with your church family.</p>
+        </div>
+      </div>
+
+      <!-- SAMPLE EVENT 2 -->
+      <div class="event-card">
+        <div class="event-date-bar">
+          <div>
+            <div class="edb-month">UPDATE</div>
+            <div class="edb-day">00</div>
+          </div>
+          <div class="edb-line"></div>
+          <div class="edb-time">UPDATE TIME<br>UPDATE LOCATION</div>
+        </div>
+        <div class="event-body">
+          <h4>Update This Event</h4>
+          <p>Add your upcoming event details here — VBS, revival, church picnic, etc.</p>
+        </div>
+      </div>
+
+      <!-- SAMPLE EVENT 3 -->
+      <div class="event-card">
+        <div class="event-date-bar">
+          <div>
+            <div class="edb-month">UPDATE</div>
+            <div class="edb-day">00</div>
+          </div>
+          <div class="edb-line"></div>
+          <div class="edb-time">UPDATE TIME<br>UPDATE LOCATION</div>
+        </div>
+        <div class="event-body">
+          <h4>Update This Event</h4>
+          <p>Add your upcoming event details here.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
