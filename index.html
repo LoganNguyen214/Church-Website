@@ -3,8 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>First Baptist Church Shannon – Welcome Home</title>
-<meta name="description" content="First Baptist Church Shannon – 143 Shannon Ave, Shannon, MS 38868. Sunday School 9am, Worship 10am. Come join us!">
+<title>First Baptist Church Shannon – Shannon, MS | Welcome Home</title>
+<meta name="description" content="First Baptist Church Shannon is a welcoming Baptist church in Shannon, Mississippi. Join us Sunday School at 9AM and Worship at 10AM. Located at 143 Shannon Ave, Shannon, MS 38868.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.fbcshannon.org/">
+
+<!-- Open Graph (Facebook, iMessage, text previews) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.fbcshannon.org/">
+<meta property="og:title" content="First Baptist Church Shannon – Shannon, MS">
+<meta property="og:description" content="A welcoming Baptist church in Shannon, Mississippi. Sunday School 9AM · Worship 10AM · Wednesday nights 6PM. All are welcome!">
+<meta property="og:image" content="https://www.fbcshannon.org/og-image.jpg">
+<meta property="og:site_name" content="First Baptist Church Shannon">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="First Baptist Church Shannon – Shannon, MS">
+<meta name="twitter:description" content="A welcoming Baptist church in Shannon, MS. Sunday School 9AM · Worship 10AM. Come join us!">
+<meta name="twitter:image" content="https://www.fbcshannon.org/og-image.jpg">
+
+<!-- Schema.org structured data (helps Google show rich results) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Church",
+  "name": "First Baptist Church Shannon",
+  "alternateName": "FBC Shannon",
+  "url": "https://www.fbcshannon.org",
+  "telephone": "+16014814795",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "143 Shannon Avenue",
+    "addressLocality": "Shannon",
+    "addressRegion": "MS",
+    "postalCode": "38868",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 34.1121,
+    "longitude": -88.7187
+  },
+  "openingHours": [
+    "Su 09:00-12:00",
+    "Su 16:00-19:00",
+    "We 17:30-20:00"
+  ],
+  "sameAs": [
+    "https://www.facebook.com/FBCShannon"
+  ],
+  "description": "First Baptist Church Shannon is a welcoming Baptist church in Shannon, Mississippi offering Sunday School, morning and evening worship, and Wednesday night services for all ages.",
+  "pastor": {
+    "@type": "Person",
+    "name": "Tim Horton"
+  }
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
@@ -246,13 +302,7 @@ blockquote cite { font-size: .78rem; color: var(--gold); font-weight: 700; lette
 
 /* NAV link for events */
 
-/* FB update tip */
-.fb-update-tip {
-  margin-top: 10px; font-size: .78rem; color: rgba(255,255,255,.35);
-  background: rgba(255,255,255,.04); border: 1px dashed rgba(255,255,255,.12);
-  border-radius: 6px; padding: 8px 14px; line-height: 1.5;
-}
-.fb-update-tip strong { color: rgba(255,255,255,.55); }
+/* Facebook page links kept intentionally */
 
 </style>
 </head>
@@ -399,22 +449,23 @@ blockquote cite { font-size: .78rem; color: var(--gold); font-weight: 700; lette
   <div class="inner">
     <div class="s-label">Worship From Anywhere</div>
     <h2 class="s-title">Watch Live</h2>
-    <p class="s-lead">We stream every Sunday at 10:00 AM on Facebook. Watch right here or join us on our Facebook page.</p>
+    <p class="s-lead">We stream every Sunday at 10:00 AM on YouTube. Watch right here or subscribe to our YouTube channel so you never miss a service.</p>
     <div class="watch-layout">
-      <div class="embed-wrap" id="fb-video-wrap">
-        <!-- 
-          HOW TO UPDATE EACH WEEK:
-          After going live, get your new video URL from Facebook and update VIDEO_ID below.
-          Or simply go to the video on Facebook, click Share > Embed, and paste the new iframe here.
+      <div class="embed-wrap" id="yt-video-wrap">
+        <!--
+          YOUTUBE LIVE EMBED — No weekly updates needed!
+          This automatically shows:
+            • Your LIVE stream when you are broadcasting
+            • Your latest uploaded video when not live
+          Powered by youtube.com/@FBCShannon
         -->
-        <iframe 
-          id="fb-video-frame"
-          src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FFBCShannon%2Fvideos%2F1260820675986529%2F&show_text=false&width=560&t=0" 
-          width="560" height="314" 
-          style="position:absolute;inset:0;width:100%;height:100%;border:none;overflow:hidden" 
-          scrolling="no" frameborder="0" 
-          allowfullscreen="true" 
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+        <iframe
+          id="yt-video-frame"
+          src="https://www.youtube.com/embed/videoseries?list=PLeNjN-kPL8mtzJRr_xpJotWtDvI7dJdvv&rel=0&modestbranding=1"
+          title="FBC Shannon Sunday Services"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
         </iframe>
       </div>
       <div class="watch-info">
@@ -423,6 +474,7 @@ blockquote cite { font-size: .78rem; color: var(--gold); font-weight: 700; lette
         <p>Can't make it in person? Tune in every Sunday morning and worship with your FBC family from wherever you are.</p>
         <p>After service, the recording stays on Facebook so you can watch or share anytime.</p>
         <div class="watch-links">
+          <a href="https://www.youtube.com/@FBCShannon" target="_blank" class="watch-link"><span>▶️</span> Subscribe on YouTube</a>
           <a href="https://www.facebook.com/FBCShannon" target="_blank" class="watch-link"><span>📘</span> Follow us on Facebook</a>
           <a href="#services" class="watch-link"><span>📍</span> Visit Us in Person</a>
           <a href="https://onrealm.org/FBCShannon/Give" target="_blank" class="watch-link"><span>💛</span> Give Online</a>
@@ -604,10 +656,10 @@ blockquote cite { font-size: .78rem; color: var(--gold); font-weight: 700; lette
         <h4>Connect</h4>
         <p>
           📞 <a href="tel:+16014814795">(601) 481-4795</a><br>
-          💻 <a href="emailto:tphorton1959@gmail.com">tphorton1959@gmail.com</a><br>
+          💻 <a href="emailto:tphorton1959@gmail.com"><span class="__cf_email__" data-cfemail="4430342c2b36302b2a757d717d042329252d286a272b29">[email&#160;protected]</span></a><br>
           Pastor Tim Horton<br><br>
           📞 <a href="tel:+16622669225">662-266-9225</a><br>
-          💻 <a href="emailto:Jamescole3006@gmail.com">Jamescole3006@gmail.com</a><br>
+          💻 <a href="emailto:Jamescole3006@gmail.com"><span class="__cf_email__" data-cfemail="bdf7dcd0d8ceded2d1d88e8d8d8bfddad0dcd4d193ded2d0">[email&#160;protected]</span></a><br>
           Youth Minister Cole Busby<br><br>
           <a href="https://www.facebook.com/FBCShannon" target="_blank">📘 Facebook Page →</a><br>
           <a href="https://onrealm.org/FBCShannon/Give" target="_blank">💛 Give Online →</a>
